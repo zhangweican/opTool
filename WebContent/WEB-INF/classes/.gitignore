@@ -1,0 +1,10 @@
+/applicationContext-mapper-opTool.xml
+/applicationContext.xml
+/com/
+/config.properties
+/env.cfg
+/log4j.properties
+/mapper/
+/spring-mybatis.xml
+/springMVC-servlet.xml
+/task/
