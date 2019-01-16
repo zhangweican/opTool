@@ -20,6 +20,7 @@
 					<option value="">请选择</option>
 					<option value="idc_cmdb" <c:if test="${deployDbPlan.dbName == 'idc_cmdb'}">selected</c:if>>idc_cmdb</option>
 					<option value="idc_work_order" <c:if test="${deployDbPlan.dbName == 'idc_work_order'}">selected</c:if>>idc_work_order</option>
+					<option value="idc_knowledge_base" <c:if test="${deployDbPlan.dbName == 'idc_knowledge_base'}">selected</c:if>>idc_knowledge_base</option>
 					<option value="idc_operation_management" <c:if test="${deployDbPlan.dbName == 'idc_operation_management'}">selected</c:if>>idc_operation_management</option>
 					<option value="usercenter" <c:if test="${deployDbPlan.dbName == 'usercenter'}">selected</c:if>>usercenter</option>
 					<option value="passport" <c:if test="${deployDbPlan.dbName == 'passport'}">selected</c:if>>passport</option>

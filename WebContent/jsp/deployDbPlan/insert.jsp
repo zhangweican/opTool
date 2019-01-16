@@ -18,13 +18,18 @@
 	<c:if test="${deployDbPlan == null}">
 	<table style="width: 100%;">
 			<tr><td>版本</td><td>
-				<input type="text" name="version">
+				<input type="text" name="version" id="version">
+				<a href="javascript:add('主线')" class="sel_btn">主线</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<c:if test="${versions != null}">
+					<c:forEach items="${versions}" var="version"><a href="javascript:add('${version}')" class="sel_btn">${version}</a>&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>
+				</c:if>
 			</tr>
 			<tr><td>库名</td>
 			<td>
 			<select name="dbName">
 					<option value="idc_cmdb">idc_cmdb</option>
 					<option value="idc_work_order">idc_work_order</option>
+					<option value="idc_knowledge_base">idc_knowledge_base</option>
 					<option value="idc_operation_management">idc_operation_management</option>
 					<option value="usercenter">usercenter</option>
 					<option value="passport">passport</option>
@@ -77,13 +82,19 @@
 	<table style="width: 100%;">
 			<tr><td>主键</td><td><input type="hidden" name="id" value="${deployDbPlan.id}">${deployDbPlan.id}</td></tr>
 			<tr><td>版本</td><td>
-				<input type="text" name="version" value="${deployDbPlan.version}">
+				<input type="text" name="version" value="${deployDbPlan.version}" id="version">
+				<a href="javascript:add('主线')" class="sel_btn">主线</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<c:if test="${versions != null}">
+					<c:forEach items="${versions}" var="version"><a href="javascript:add('${version}')" class="sel_btn">${version}</a>&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>
+				</c:if>
+				
 			</tr>
 			<tr><td>库名</td>
 			<td>
 			<select name="dbName">
 					<option value="idc_cmdb" <c:if test="${deployDbPlan.dbName == 'idc_cmdb'}">selected</c:if>>idc_cmdb</option>
 					<option value="idc_work_order" <c:if test="${deployDbPlan.dbName == 'idc_work_order'}">selected</c:if>>idc_work_order</option>
+					<option value="idc_knowledge_base" <c:if test="${deployDbPlan.dbName == 'idc_knowledge_base'}">selected</c:if>>idc_knowledge_base</option>
 					<option value="idc_operation_management" <c:if test="${deployDbPlan.dbName == 'idc_operation_management'}">selected</c:if>>idc_operation_management</option>
 					<option value="usercenter" <c:if test="${deployDbPlan.dbName == 'usercenter'}">selected</c:if>>usercenter</option>
 					<option value="passport" <c:if test="${deployDbPlan.dbName == 'passport'}">selected</c:if>>passport</option>
@@ -166,7 +177,9 @@
        function goList(){
     	   window.location.href='list';
        }
-
+	   function add(version){
+		   document.getElementById("version").value = version;
+	   }
 </script>
   <style type="text/css">
         table{
@@ -189,6 +202,20 @@
         table tr:nth-child(even){
             background: #F5FAFA;
         }
+        
+ .sel_btn{
+            height: 21px;
+            line-height: 21px;
+            padding: 0 11px;
+            background: #e4e4e4;
+            border: 1px #26bbdb solid;
+            border-radius: 3px;
+            /*color: #fff;*/
+            display: inline-block;
+            text-decoration: none;
+            font-size: 12px;
+            outline: none;
+        }       
     </style>
 
 

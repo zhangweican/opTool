@@ -20,6 +20,7 @@ import com.test.dao.entry.DeployDbPlan;
 import com.test.dao.entry.DeployDbPlanExample;
 import com.test.dao.entry.DeployDbPlanExample.Criteria;
 import com.test.service.DeployDbPlanService;
+import com.test.util.SVNUtil;
 
 @Controller
 @RequestMapping("/deployDbPlan")
@@ -92,7 +93,8 @@ public class DeployDbPlanController {
 			}else{
 				request.setAttribute("deployDbPlan", null);
 			}
-			
+			List<String> versions = SVNUtil.listEntries(SVNUtil.getConnection(), "/Development/IDC/branches/");
+			request.setAttribute("versions", versions);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Errir:" ,e);
