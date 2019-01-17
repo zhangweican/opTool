@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.leweiyou.tools.date.DateUtil;
 import com.test.dao.entry.DeployDbPlan;
 import com.test.dao.entry.DeployDbPlanExample;
@@ -93,8 +96,8 @@ public class DeployDbPlanController {
 			}else{
 				request.setAttribute("deployDbPlan", null);
 			}
-			List<String> versions = SVNUtil.listEntries(SVNUtil.getConnection(), "/Development/IDC/branches/");
-			request.setAttribute("versions", versions);
+			//List<String> versions = SVNUtil.listEntries(SVNUtil.getConnection(), "/Development/IDC/branches/");
+			//request.setAttribute("versions", versions);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Errir:" ,e);
@@ -229,5 +232,24 @@ public class DeployDbPlanController {
 			logger.error("Errir:" ,e);
 		}
 		return -1;
+	}
+	@RequestMapping("/getVersions")
+	@ResponseBody
+	public JSONArray getVersions(){
+		JSONArray ja = new JSONArray();
+		try {
+			List<String> versions = SVNUtil.listEntries(SVNUtil.getConnection(), "/Development/IDC/branches/");
+			if(CollectionUtils.isNotEmpty(versions)){
+				for(String s : versions){
+					JSONObject jo = new JSONObject();
+					jo.put("version", s);
+					ja.add(jo);
+				}
+			}
+			return ja;
+		} catch (Exception e) {
+			logger.error("链接失败",e);
+		}
+		return new JSONArray();
 	}
 }

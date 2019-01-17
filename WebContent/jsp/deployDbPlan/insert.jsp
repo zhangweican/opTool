@@ -19,10 +19,9 @@
 	<table style="width: 100%;">
 			<tr><td>版本</td><td>
 				<input type="text" name="version" id="version">
+				<div id="versionsDiv">
 				<a href="javascript:add('主线')" class="sel_btn">主线</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<c:if test="${versions != null}">
-					<c:forEach items="${versions}" var="version"><a href="javascript:add('${version}')" class="sel_btn">${version}</a>&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>
-				</c:if>
+				</div>
 			</tr>
 			<tr><td>库名</td>
 			<td>
@@ -83,10 +82,10 @@
 			<tr><td>主键</td><td><input type="hidden" name="id" value="${deployDbPlan.id}">${deployDbPlan.id}</td></tr>
 			<tr><td>版本</td><td>
 				<input type="text" name="version" value="${deployDbPlan.version}" id="version">
+				
+				<div id="versionsDiv">
 				<a href="javascript:add('主线')" class="sel_btn">主线</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<c:if test="${versions != null}">
-					<c:forEach items="${versions}" var="version"><a href="javascript:add('${version}')" class="sel_btn">${version}</a>&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>
-				</c:if>
+				</div>
 				
 			</tr>
 			<tr><td>库名</td>
@@ -180,6 +179,16 @@
 	   function add(version){
 		   document.getElementById("version").value = version;
 	   }
+	   $.post("${cxt}/deployDbPlan/getVersions",{},function(result){
+		  var json = JSON.parse(result);
+		  //alert(json);
+		  for(var i=0,l=json.length;i<l;i++){
+			  	var str = "<a href=\"javascript:add('" + json[i].version +"')\" class=\"sel_btn\">" + json[i].version + "</a>&nbsp;&nbsp;&nbsp;&nbsp";
+			  	$('#versionsDiv').append(str);
+			  }
+		  
+		}); 
+	   
 </script>
   <style type="text/css">
         table{
