@@ -32,6 +32,7 @@
 					<option value="idc_operation_management">idc_operation_management</option>
 					<option value="usercenter">usercenter</option>
 					<option value="passport">passport</option>
+					<option value="activiti">activiti</option>
 				</select>
 			</td>
 			</tr>
@@ -97,6 +98,7 @@
 					<option value="idc_operation_management" <c:if test="${deployDbPlan.dbName == 'idc_operation_management'}">selected</c:if>>idc_operation_management</option>
 					<option value="usercenter" <c:if test="${deployDbPlan.dbName == 'usercenter'}">selected</c:if>>usercenter</option>
 					<option value="passport" <c:if test="${deployDbPlan.dbName == 'passport'}">selected</c:if>>passport</option>
+					<option value="activiti" <c:if test="${deployDbPlan.dbName == 'activiti'}">selected</c:if>>activiti</option>
 				</select>
 			</td>
 			</tr>
