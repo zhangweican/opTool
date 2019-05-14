@@ -122,7 +122,7 @@
 ${v.content}
 
 </textarea> 
-				<a href="javascript:sendQQ(${v.id})" id="sendMsgA${v.id}">发送数据库操作群</a></td>
+				<a href="javascript:sendQQ(${v.id})" id="sendMsgA${v.id}">发送群</a></td>
 				<td><c:if test="${v.isDelete == 0}"><a href="delete?id=${v.id}">删除</a></c:if><c:if test="${v.isDelete == 1}">删除</c:if></td>
 			</tr>
 		</c:forEach>
