@@ -69,7 +69,7 @@
 	<br>
 	<center><input type="submit" value="检索"></center>
 	</form>
-	<hr>
+	<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="新增" onclick="add()">
 	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="标记“开发库”为“待执行”" onclick="flag(1)" style="border-style:solid;border-width:2px;border-color:RED;color: RED">
 	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="标记”测试库“为“待执行”" onclick="flag(2)" style="border-style:solid;border-width:2px;border-color:RED;color: RED">
@@ -81,6 +81,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="标记”测试库“为“已执行”" onclick="flagOK(2)" style="border-style:solid;border-width:2px;border-color:GREEN;color: GREEN">
 	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="标记“预发布库”为“已执行”" onclick="flagOK(3)" style="border-style:solid;border-width:2px;border-color:GREEN;color: GREEN">
 	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="标记”生产库“为“已执行”" onclick="flagOK(4)" style="border-style:solid;border-width:2px;border-color:GREEN;color: GREEN">
+	<br>
 	<br>
 	<table style="width: 100%;">
 		<tr style="background: #C4E1FF; color: #fff;">
